@@ -8,12 +8,17 @@ Personalised script to install required software and set preferences when settin
 - iterm
 - Visual studio code
 - Neovim
+- Sublime Text
 - Adobe creative cloud
 - Xcode developer tools
 
 ## Command line
 
 - CSVKit
+
+Add `subl` command to zshrc file:
+
+  `export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"`
 
 ## System
 
