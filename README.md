@@ -2,7 +2,7 @@
 
 Personalised script to install required software and set preferences when setting up a new mac.
 
-# Software:
+## Software:
 
 - Homebrew
 - iterm
@@ -116,3 +116,9 @@ INTEL_HOMEBREW_PREFIX="/usr/local"
 
 This causes an error when the `_sn_setup_zscaler_openssl` tries to save the `.pem` file in the Arm location.
 This should be fixed when the I recieve a new laptop.
+
+## Github
+
+1. [Checking for existing SSH keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)
+2. [Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+3. [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
