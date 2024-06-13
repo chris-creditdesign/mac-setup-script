@@ -25,7 +25,7 @@ nvm install node # "node" is an alias for the latest version
 
 - Install [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#homebrew-in-macos) to manage python versions
 
-### [Set up your shell environment for Pyenv](Set up your shell environment for Pyenv)
+### [Set up your shell environment for pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv)
 
 ```
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
@@ -71,6 +71,8 @@ Add `subl` command to zshrc file:
 - Git
 
 ## SpringerNature
+
+[Engineering Enablement Getting Started](https://ee.public.springernature.app/rel-eng/getting-started/)
 
 - Halfepipe
 - Vault
