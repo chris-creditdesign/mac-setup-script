@@ -21,6 +21,16 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install node # "node" is an alias for the latest version
 ```
 
+- Tmux
+
+Create a config file `~/.tmux.conf`.
+
+Add the following, to prevent delay when pressing escape in neovim:
+
+```
+set -sg escape-time 0
+```
+
 ## Python 
 
 - Install [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#homebrew-in-macos) to manage python versions
