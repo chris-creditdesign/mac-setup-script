@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>This is a test poll</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<style>
+		body {
+			margin: 0;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+			color: #222222 !important;
+			font-size: 16px !important;
+			font-weight: 400 !important;
+		}
+
+		.sg-survey {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="content">
+		<h1>POLL-TITLE</h1>
+		<p>
+			<a href="PREVIEW-URL?jsfallback=true" target="new">Click here to complete our survey.</a>
+		</p>
+	</div>
+
+	<script type="text/javascript">
+		function ctm() {
+			if (/*@cc_on!@*/ false) {
+				return false; // stop IE10 CTMing
+			}
+			return "visibilityState" in document;
+		}
+
+		function removeBaseExperience() {
+			var content = document.querySelector(".content");
+			content.parentElement.removeChild(content);
+		}
+
+		function addGizmoSurvey() {
+			document.write(
+				'<script src="http' +
+				("https:" == document.location.protocol ? "s" : "") +
+				"://survey.alchemer.com/s3/POLL-ID?__output=embedjs&__ref=" +
+				escape(document.location.href) +
+				'" type="text/javascript" ></scr' +
+				"ipt>"
+			);
+		}
+
+		/*
+		  Check that the event data is in this shape.
+		  {
+			  name: "getHeight",
+			  id: element.id
+		  }
+		*/
+		function checkEventData(event) {
+			try {
+				event.hasOwnProperty("data");
+			} catch {
+				return false;
+			}
+			try {
+				event.data.hasOwnProperty("name");
+			} catch {
+				return false;
+			}
+			try {
+				event.data.hasOwnProperty("id");
+			} catch {
+				return false;
+			}
+			var isObject = typeof event.data === "object";
+			var nameIsGetHeight = event.data.name === "getHeight";
+			var idIsSting = typeof event.data.id === "string";
+			return isObject && nameIsGetHeight && idIsSting;
+		}
+
+		function setIframeHeight() {
+			var localStorageKey = "mag-interactive--POLL-ID";
+
+			function getEventFromLocalStorage() {
+				var eventData = window.localStorage.getItem(localStorageKey);
+				if (eventData) {
+					return {
+						data: JSON.parse(eventData),
+					};
+				}
+				return null;
+			}
+
+			function handleMessage(event) {
+				let goodEvent = checkEventData(event);
+				if (goodEvent) {
+					window.localStorage.setItem(
+						localStorageKey,
+						JSON.stringify(event.data)
+					);
+				}
+				return null;
+			}
+
+			function resize(event) {
+				var eventFromLocalStorage = getEventFromLocalStorage();
+				if (eventFromLocalStorage) {
+					var documentHeight = document.querySelector("body").offsetHeight;
+					resizeData = eventFromLocalStorage.data;
+					window.parent.postMessage(
+						{ height: documentHeight, requestData: resizeData },
+						"*"
+					);
+				}
+				return null;
+			}
+
+			window.addEventListener("message", handleMessage);
+
+			window.setInterval(function () {
+				resize();
+			}, 250);
+		}
+
+		if (ctm()) {
+			removeBaseExperience();
+			addGizmoSurvey();
+			setIframeHeight();
+		}
+	</script>
+</body>
+
+</html>
