@@ -31,6 +31,24 @@ Add the following, to prevent delay when pressing escape in neovim:
 set -sg escape-time 0
 ```
 
+## VSCode
+
+To disable the Apple press and hold for VSCode only, run this command in a terminal:
+
+```
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+```
+
+Then restart VSCode.
+
+To re-enable, run this command in a terminal:
+
+```
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool true
+```
+
+From [Stack Overflow](https://stackoverflow.com/questions/39972335/how-do-i-press-and-hold-a-key-and-have-it-repeat-in-vscode).
+
 ## Python 
 
 - Install [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#homebrew-in-macos) to manage python versions
