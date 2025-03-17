@@ -21,7 +21,53 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install node # "node" is an alias for the latest version
 ```
 
-- Tmux
+## ZSH
+
+Create `~/.zshrc` file
+
+```
+# Download Znap, if it's not there yet.
+[[ -r ~/Repos/znap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
+source ~/Repos/znap/znap.zsh  # Start Znap
+
+# Start pyenv before running zscaler script to enuser correct version of python
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+source ~/Repos/springernature/sn-zsh-extensions/springernature.plugin.zsh
+
+# Add Sublime Text 'subl' to PATH
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+
+# JAVA for running Oscar locally
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+```
+
+## Homebrew
+
+Install Homebrew with:
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Run this command in your terminal to add Homebrew to your PATH:
+
+```
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+## Tmux
+
+Install: 
+
+```
+brew install tmux
+```
 
 Create a config file `~/.tmux.conf`.
 
@@ -30,6 +76,16 @@ Add the following, to prevent delay when pressing escape in neovim:
 ```
 set -sg escape-time 0
 ```
+
+## Neovim
+
+Instal with: 
+
+```
+brew install neovim
+```
+
+Copy neovim config from `nvim` to `~/.config/nvim`. 
 
 ## VSCode
 
@@ -124,6 +180,4 @@ export NVM_DIR="$HOME/.nvm"
 2. [Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 3. [Adding a new SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-## Neovim
 
-Copy neovim config from `nvim` to `~/.config/nvim`.
