@@ -53,37 +53,6 @@ From [Stack Overflow](https://stackoverflow.com/questions/39972335/how-do-i-pres
 
 - Install [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#homebrew-in-macos) to manage python versions
 
-### [Set up your shell environment for pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#set-up-your-shell-environment-for-pyenv)
-
-```
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-```
-
-Apply the changes to your current shell session:
-
-```
-source ~/.zshrc
-```
-
-Install the latest version of python:
-
-```
-pyenv install 3.12.3  # Replace with the actual LTS version if different
-```
-
-Set the newly installed version as the global default:
-
-```
-pyenv global 3.12.3
-```
-
-Verify the installation
-
-```
-python --version
-```
 
 ## Command line
 
@@ -121,9 +90,17 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-source ~/Repos/springernature/sn-zsh-extensions/vault.zsh
-source ~/Repos/springernature/sn-zsh-extensions/zscaler.zsh
+# Check if Python 3.13.3 is installed and set it as the global version if present
+if pyenv versions | grep -q "3.13.3"; then
+    pyenv global 3.13.3
+else
+    echo "Python 3.13.3 is not installed. You can install it using:"
+    echo "pyenv install 3.13.3"
+fi
 
+source ~/Repos/springernature/sn-zsh-extensions/springernature.plugin.zsh
+
+# Add Sublime Text 'subl' to PATH
 export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 
 export NVM_DIR="$HOME/.config/nvm"
@@ -131,21 +108,15 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
-The Homebrew Prefix seems to be different for intel macs vs arm macs.
+Add the following to the `.zprofile` file:
 
-The homebrew prefix can be found with 
+```bash
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
-brew config | grep HOMEBREW_PREFIX
-```
-
-```
-ARM_HOMEBREW_PREFIX="/opt/homebrew"
-INTEL_HOMEBREW_PREFIX="/usr/local"
-```
-
-This causes an error when the `_sn_setup_zscaler_openssl` tries to save the `.pem` file in the Arm location.
-This should be fixed when the I recieve a new laptop.
 
 ## Github
 
