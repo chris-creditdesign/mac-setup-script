@@ -21,32 +21,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install node # "node" is an alias for the latest version
 ```
 
-## ZSH
-
-Create `~/.zshrc` file
-
-```
-# Download Znap, if it's not there yet.
-[[ -r ~/Repos/znap/znap.zsh ]] ||
-    git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
-source ~/Repos/znap/znap.zsh  # Start Znap
-
-# Start pyenv before running zscaler script to enuser correct version of python
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-source ~/Repos/springernature/sn-zsh-extensions/springernature.plugin.zsh
-
-# Add Sublime Text 'subl' to PATH
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
-
-# JAVA for running Oscar locally
-export JAVA_HOME=$(/usr/libexec/java_home)
-
-```
-
 ## Homebrew
 
 Install Homebrew with:
@@ -132,47 +106,11 @@ Add `subl` command to zshrc file:
 - Znap - ZSH extension manager
 - [Springer Nature ZSH extensions](https://github.com/springernature/sn-zsh-extensions/tree/main)
 
-Add vault and zscaler to `.zshrc` file:
+## ZSH
 
-```bash
-# Download Znap, if it's not there yet.
-[[ -r ~/Repos/znap/znap.zsh ]] ||
-    git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
-source ~/Repos/znap/znap.zsh  # Start Znap
-
-# Start pyenv before running zscaler script to enuser correct version of python
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# Check if Python 3.13.3 is installed and set it as the global version if present
-if pyenv versions | grep -q "3.13.3"; then
-    pyenv global 3.13.3
-else
-    echo "Python 3.13.3 is not installed. You can install it using:"
-    echo "pyenv install 3.13.3"
-fi
-
-source ~/Repos/springernature/sn-zsh-extensions/springernature.plugin.zsh
-
-# Add Sublime Text 'subl' to PATH
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
-
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-```
-
-Add the following to the `.zprofile` file:
-
-```bash
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-```
+Copy `.zshrc` and `.zprofile` files to home directory `~`.
+ 
+Zprofile contains instructions to create tmux sessions for oscar, trump-widget and ai-widget.
 
 ## Github
 
