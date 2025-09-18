@@ -21,6 +21,12 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install node # "node" is an alias for the latest version
 ```
 
+## ZSH
+
+Copy `dev/.zshrc` and `dev.zprofile` files to home directory `~`.
+ 
+Zprofile contains instructions to create tmux sessions for oscar, trump-widget and ai-widget.
+
 ## Homebrew
 
 Install Homebrew with:
@@ -53,13 +59,21 @@ set -sg escape-time 0
 
 ## Neovim
 
-Instal with: 
+Install with: 
 
 ```
 brew install neovim
 ```
 
 Copy neovim config from `nvim` to `~/.config/nvim`. 
+
+## Lazygit
+
+Install with:
+
+```
+brew install lazygit
+```
 
 ## VSCode
 
@@ -88,6 +102,8 @@ From [Stack Overflow](https://stackoverflow.com/questions/39972335/how-do-i-pres
 
 - CSVKit
 
+## Sublime Text
+
 Add `subl` command to zshrc file:
 
   `export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"`
@@ -106,11 +122,7 @@ Add `subl` command to zshrc file:
 - Znap - ZSH extension manager
 - [Springer Nature ZSH extensions](https://github.com/springernature/sn-zsh-extensions/tree/main)
 
-## ZSH
 
-Copy `.zshrc` and `.zprofile` files to home directory `~`.
- 
-Zprofile contains instructions to create tmux sessions for oscar, trump-widget and ai-widget.
 
 ## Github
 
