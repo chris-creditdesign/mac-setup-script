@@ -51,10 +51,14 @@ brew install tmux
 
 Create a config file `~/.tmux.conf`.
 
-Add the following, to prevent delay when pressing escape in neovim:
+Add the following, to prevent delay when pressing escape in neovim and to enable squiggly line support:
 
 ```
+# Make sure tmux doesn't add delays to escape key for vim
 set -sg escape-time 0
+
+# Set color scheme for squiggly line support
+set -g default-terminal "xterm-256color"
 ```
 
 ## Neovim
