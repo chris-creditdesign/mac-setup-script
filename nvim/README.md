@@ -12,6 +12,24 @@ https://github.com/nvim-telescope/telescope.nvim
 
 https://github.com/loctvl842/monokai-pro.nvim
 
+## nvim-lspconfig
+
+A collection of LSP server configurations for the Nvim LSP client.
+
+https://github.com/neovim/nvim-lspconfig
+
+## Mason
+
+Manage external editor tooling such as LSP servers, DAP servers, linters, and formatters through a single interface.
+
+https://github.com/mason-org/mason.nvim
+
+## Mason-lspconfig
+
+(i) automatically install, and (ii) automatically enable (vim.lsp.enable()) installed servers
+
+https://github.com/mason-org/mason-lspconfig.nvim
+
 ## Treesitter
 
 https://github.com/nvim-treesitter/nvim-treesitter

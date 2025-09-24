@@ -4,12 +4,12 @@ vim.opt.nu = true
 -- Enables relative line numbers.
 vim.opt.relativenumber = true
 
-vim.opt.expandtab = false   -- Use tabs instead of spaces
-vim.opt.tabstop = 4         -- Number of spaces a tab counts for
-vim.opt.shiftwidth = 4      -- Number of spaces to use for each step of (auto)indent
-vim.opt.softtabstop = 4     -- Number of spaces that a <Tab> counts for while editing
+vim.opt.expandtab = false -- Use tabs instead of spaces
+vim.opt.tabstop = 4       -- Number of spaces a tab counts for
+vim.opt.shiftwidth = 4    -- Number of spaces to use for each step of (auto)indent
+vim.opt.softtabstop = 4   -- Number of spaces that a <Tab> counts for while editing
 
-vim.opt.list = true    -- Enable list mode to show whitespace characters
+vim.opt.list = true       -- Enable list mode to show whitespace characters
 vim.opt.listchars = { tab = '» ', trail = '·', extends = '>', precedes = '<', space = '·' }
 
 -- Enables smart indentation, which automatically adjusts the indentation level based on the syntax and structure of the code.
@@ -31,3 +31,8 @@ vim.opt.scrolloff = 8
 
 vim.cmd.colorscheme("monokai-pro")
 
+-- Always show the sign column to prevent text shifting
+vim.opt.signcolumn = "yes"
+
+-- Sets the border style for floating windows to "rounded", giving them a smoother appearance.
+-- vim.opt.winborder = "rounded"
