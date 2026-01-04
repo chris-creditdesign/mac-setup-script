@@ -69,7 +69,34 @@ Install with:
 brew install neovim
 ```
 
-Copy neovim config from `nvim` to `~/.config/nvim`. 
+Copy neovim config from `nvim` to `~/.config/nvim`.
+
+### Problem with red squiggly lines not working in Neovim
+
+i.e. Typescript error not showing underline inside Neovim within Tmux
+
+To fix, install a tmux `$TERM` terminfo entry that advertises undercurl + underline color using the escape sequences.
+
+Create a terminfo source file and compile it into your user terminfo directory for `tmux-256color-uc`:
+
+```bash
+cat > /tmp/tmux-256color-uc.ti <<'EOF'
+tmux-256color-uc|tmux-256color with undercurl,
+  use=tmux-256color,
+  Smulx=\E[4:%p1%dm,
+  Setulc=\E[58:2::%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%d%;m,
+EOF
+
+tic -x -o ~/.terminfo /tmp/tmux-256color-uc.ti
+```
+
+Configure tmux to use that terminal type, in `~/.tmux.conf`
+
+```tmux
+set -g default-terminal "tmux-256color-uc"
+```
+
+Restart Tmux with `tmux kill-server`
 
 ## Lazygit
 
